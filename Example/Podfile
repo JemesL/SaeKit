@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SaeKit_Example' do
+  pod 'SaeKit', :path => '../'
+
+  target 'SaeKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
