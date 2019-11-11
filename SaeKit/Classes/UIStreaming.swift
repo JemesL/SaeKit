@@ -51,21 +51,21 @@ public class UIStreaming {
     
     private var config = UIStreamingConfig()
     
-    var horizontal: UIStreaming {
+    public var horizontal: UIStreaming {
         get {
             self.config.direction = .horizontal
             return self
         }
     }
     
-    var vertical: UIStreaming {
+    public var vertical: UIStreaming {
         get {
             self.config.direction = .vertical
             return self
         }
     }
     
-    var horizontalMul: UIStreaming {
+    public var horizontalMul: UIStreaming {
         get {
             self.config.direction = .horizontal
             self.config.isMul = true
@@ -73,117 +73,117 @@ public class UIStreaming {
         }
     }
     
-    func horizontalMulWithCount(_ v: Int) -> UIStreaming {
+    public func horizontalMulWithCount(_ v: Int) -> UIStreaming {
         self.config.direction = .horizontal
         self.config.isMul = true
         self.config.lineCount = v
         return self
     }
     
-    func lineCount(_ count: Int) -> UIStreaming {
+    public func lineCount(_ count: Int) -> UIStreaming {
         if count > 0 {
             self.config.lineCount = count
         }
         return self
     }
     
-    var equalWidth: UIStreaming {
+    public var equalWidth: UIStreaming {
         get {
             self.config.isEqualWidth = true
             return self
         }
     }
     
-    var equalHeight: UIStreaming {
+    public var equalHeight: UIStreaming {
         get {
             self.config.isEqualHeight = true
             return self
         }
     }
     
-    var isFillHor: UIStreaming {
+    public var isFillHor: UIStreaming {
         get {
             config.isFillHor = true
             return self
         }
     }
     
-    var isFillVer: UIStreaming {
+    public var isFillVer: UIStreaming {
         get {
             config.isFillVer = true
             return self
         }
     }
     
-    func hMargin(_ h: CGFloat) -> UIStreaming {
+    public func hMargin(_ h: CGFloat) -> UIStreaming {
         self.config.hMargin = h
         return self
     }
     
-    func vMargin(_ v: CGFloat) -> UIStreaming {
+    public func vMargin(_ v: CGFloat) -> UIStreaming {
         self.config.vMargin = v
         return self
     }
     
-    var hasHeight: UIStreaming {
+    public var hasHeight: UIStreaming {
         self.config.hasHeight = true
         return self
     }
     
-    var hasWidth: UIStreaming {
+    public var hasWidth: UIStreaming {
         self.config.hasWidth = true
         return self
     }
     
-    func superWidth(_ v: CGFloat) -> UIStreaming {
+    public func superWidth(_ v: CGFloat) -> UIStreaming {
         self.config.superWidth = v
         return self
     }
     
-    func width(_ w: CGFloat) -> UIStreaming {
+    public func width(_ w: CGFloat) -> UIStreaming {
         self.config.width = w
         return self
     }
     
-    func height(_ h: CGFloat) -> UIStreaming {
+    public func height(_ h: CGFloat) -> UIStreaming {
         self.config.height = h
         return self
     }
     
-    func padding(_ p: UIEdgeInsets) -> UIStreaming {
+    public func padding(_ p: UIEdgeInsets) -> UIStreaming {
         self.config.padding = p
         return self
     }
     
-    func leftPadding(_ v: CGFloat) -> UIStreaming {
+    public func leftPadding(_ v: CGFloat) -> UIStreaming {
         var tmp = self.config.padding
         tmp.left = v
         self.config.padding = tmp
         return self
     }
     
-    func rightPadding(_ v: CGFloat) -> UIStreaming {
+    public func rightPadding(_ v: CGFloat) -> UIStreaming {
         var tmp = self.config.padding
         tmp.right = v
         self.config.padding = tmp
         return self
     }
     
-    func topPadding(_ v: CGFloat) -> UIStreaming {
+    public func topPadding(_ v: CGFloat) -> UIStreaming {
         var tmp = self.config.padding
         tmp.top = v
         self.config.padding = tmp
         return self
     }
     
-    func bottomPadding(_ v: CGFloat) -> UIStreaming {
+    public func bottomPadding(_ v: CGFloat) -> UIStreaming {
         var tmp = self.config.padding
         tmp.bottom = v
         self.config.padding = tmp
         return self
     }
     
-    func maskConstraints() {
+    public func maskConstraints() {
         guard let direction = config.direction else { return }
         if direction == .vertical {
             makeVerticalConstraints()
