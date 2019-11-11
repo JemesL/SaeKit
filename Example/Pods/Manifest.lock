@@ -1,0 +1,24 @@
+PODS:
+  - SaeKit (0.1.0):
+    - SnapKit (~> 4.2.0)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - SaeKit (from `../`)
+  - SnapKit (~> 4.2.0)
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+
+EXTERNAL SOURCES:
+  SaeKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SaeKit: f1edda2df2611ff4f0e44da155b0ddebef5f438f
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: abc09ee09c954b23ddda00c51815e45661277d49
+
+COCOAPODS: 1.8.4

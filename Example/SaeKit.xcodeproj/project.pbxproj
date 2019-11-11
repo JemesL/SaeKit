@@ -14,6 +14,12 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		8CC09428237902D200E0C3C2 /* STATVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC09427237902D200E0C3C2 /* STATVCtrl.swift */; };
+		8CC09429237902D200E0C3C2 /* STATVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC09427237902D200E0C3C2 /* STATVCtrl.swift */; };
+		8CC0942B237902E000E0C3C2 /* UIStreamingVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0942A237902E000E0C3C2 /* UIStreamingVCtrl.swift */; };
+		8CC0942C237902E000E0C3C2 /* UIStreamingVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0942A237902E000E0C3C2 /* UIStreamingVCtrl.swift */; };
+		8CC0942E2379034E00E0C3C2 /* KVOVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0942D2379034E00E0C3C2 /* KVOVCtrl.swift */; };
+		8CC0942F2379034E00E0C3C2 /* KVOVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0942D2379034E00E0C3C2 /* KVOVCtrl.swift */; };
 		BD7F2CF44E2FFE3830F8AFCF /* Pods_SaeKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E706A6B9C9A6FD5F51C392 /* Pods_SaeKit_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		09F2AC3FACAE26410D729548 /* Pods-SaeKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaeKit_Example.release.xcconfig"; path = "Target Support Files/Pods-SaeKit_Example/Pods-SaeKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		0BFE48C2E58B66AD5FA93599 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0BFE48C2E58B66AD5FA93599 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SaeKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaeKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,9 +46,12 @@
 		607FACE51AFB9204008FA782 /* SaeKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaeKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		818CF4979D1AE3DDE375D953 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		818CF4979D1AE3DDE375D953 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		8CC09427237902D200E0C3C2 /* STATVCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATVCtrl.swift; sourceTree = "<group>"; };
+		8CC0942A237902E000E0C3C2 /* UIStreamingVCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStreamingVCtrl.swift; sourceTree = "<group>"; };
+		8CC0942D2379034E00E0C3C2 /* KVOVCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOVCtrl.swift; sourceTree = "<group>"; };
 		9338ED0844594C21E525DB37 /* Pods_SaeKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaeKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9616CBBF261CFDB8890CDCDF /* SaeKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SaeKit.podspec; path = ../SaeKit.podspec; sourceTree = "<group>"; };
+		9616CBBF261CFDB8890CDCDF /* SaeKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SaeKit.podspec; path = ../SaeKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AF981A62DEE3D2EDEB38E987 /* Pods-SaeKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaeKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SaeKit_Tests/Pods-SaeKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1E706A6B9C9A6FD5F51C392 /* Pods_SaeKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaeKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF7DBA5612AE06BE90665206 /* Pods-SaeKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaeKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-SaeKit_Tests/Pods-SaeKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,7 +86,6 @@
 				AF981A62DEE3D2EDEB38E987 /* Pods-SaeKit_Tests.debug.xcconfig */,
 				DF7DBA5612AE06BE90665206 /* Pods-SaeKit_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -105,6 +113,7 @@
 		607FACD21AFB9204008FA782 /* Example for SaeKit */ = {
 			isa = PBXGroup;
 			children = (
+				8CC09426237902B200E0C3C2 /* Classes */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -149,6 +158,16 @@
 				818CF4979D1AE3DDE375D953 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		8CC09426237902B200E0C3C2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8CC09427237902D200E0C3C2 /* STATVCtrl.swift */,
+				8CC0942D2379034E00E0C3C2 /* KVOVCtrl.swift */,
+				8CC0942A237902E000E0C3C2 /* UIStreamingVCtrl.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		D7AEA9E1CA4A31D0AC096B87 /* Frameworks */ = {
@@ -213,6 +232,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9W5WG436WL;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -227,6 +247,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -292,10 +313,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SaeKit_Example/Pods-SaeKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SaeKit/SaeKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SaeKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -331,7 +354,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC0942B237902E000E0C3C2 /* UIStreamingVCtrl.swift in Sources */,
+				8CC0942E2379034E00E0C3C2 /* KVOVCtrl.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				8CC09428237902D200E0C3C2 /* STATVCtrl.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +366,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC0942F2379034E00E0C3C2 /* KVOVCtrl.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				8CC0942C237902E000E0C3C2 /* UIStreamingVCtrl.swift in Sources */,
+				8CC09429237902D200E0C3C2 /* STATVCtrl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +507,7 @@
 			baseConfigurationReference = F855BE1EF719CCD8C22A1814 /* Pods-SaeKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9W5WG436WL;
 				INFOPLIST_FILE = SaeKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -493,6 +523,7 @@
 			baseConfigurationReference = 09F2AC3FACAE26410D729548 /* Pods-SaeKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9W5WG436WL;
 				INFOPLIST_FILE = SaeKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
