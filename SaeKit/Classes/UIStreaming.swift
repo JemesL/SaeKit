@@ -252,7 +252,7 @@ extension UIStreaming {
     
     private func makeHorizontalConstraints() {
         guard let superView = superView else { return }
-        guard let firstView = subs.first else { return }
+//        guard let firstView = subs.first else { return }
         var lastView = superView
         let count = subs.count
         
@@ -295,8 +295,8 @@ extension UIStreaming {
     // 换行: 父视图有宽度, 元素高度必须一致
     private func makeMulLineHorizontalConstraints() {
         guard let superView = superView else { return }
-        guard let firstView = subs.first else { return }
-        var lastView = superView
+//        guard let firstView = subs.first else { return }
+//        var lastView = superView
         let count = subs.count
         var left: CGFloat = config.padding.left
         var top: CGFloat = config.padding.top
@@ -346,7 +346,7 @@ extension UIStreaming {
             lineCount = lc
         }
         let count = subs.count
-        guard let firstView = subs.first else { return }
+//        guard let firstView = subs.first else { return }
         for (index, view) in subs.enumerated() {
             superView.addSubview(view)
             view.snp.remakeConstraints { (make) in
