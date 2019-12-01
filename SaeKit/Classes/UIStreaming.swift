@@ -183,7 +183,7 @@ public class UIStreaming {
         return self
     }
     
-    public func maskConstraints() {
+    public func makeConstraints() {
         guard let direction = config.direction else { return }
         if direction == .vertical {
             makeVerticalConstraints()
@@ -295,12 +295,11 @@ extension UIStreaming {
     // 换行: 父视图有宽度, 元素高度必须一致
     private func makeMulLineHorizontalConstraints() {
         guard let superView = superView else { return }
-//        guard let firstView = subs.first else { return }
-//        var lastView = superView
         let count = subs.count
         var left: CGFloat = config.padding.left
         var top: CGFloat = config.padding.top
         var widthMax: CGFloat = 0
+        var lastLine = superView
         if let superWidth = config.superWidth {
             widthMax = superWidth
         } else {
@@ -319,13 +318,18 @@ extension UIStreaming {
                     // 换行
                     left = config.padding.left
                     curLineCount += 1
-                    if curLineCount > 1 {
-                        top += curViewHeight + config.vMargin
-                    }
+                    lastLine = subs[index - 1]
                 }
                 make.width.equalTo(curViewWidth)
-                make.height.equalTo(curViewHeight)
-                make.top.equalTo(top)
+                if curViewHeight != 0 {
+                    make.height.equalTo(curViewHeight)
+                }
+                if curLineCount == 1 {
+                    make.top.equalTo(config.padding.top)
+                } else {
+                    make.top.equalTo(lastLine.snp.bottom).offset(config.vMargin)
+                }
+//                make.top.equalTo(top)
                 make.left.equalTo(left)
                 left += config.hMargin + curViewWidth
                 if index == (count - 1) {
@@ -349,7 +353,10 @@ extension UIStreaming {
 //        guard let firstView = subs.first else { return }
         for (index, view) in subs.enumerated() {
             superView.addSubview(view)
+            let curViewWidth = getCurViewWidth(v: view)
+            let curViewHeight = getCurViewHeight(v: view)
             view.snp.remakeConstraints { (make) in
+                
                 // 列数
                 let col: Int = index % lineCount
                 if index < lineCount {
@@ -361,12 +368,14 @@ extension UIStreaming {
                 if config.isEqualWidth {// 等分
                     let widthOffset: CGFloat = (config.padding.left + config.padding.right + 2 * config.hMargin) / CGFloat(lineCount)
                     make.width.equalToSuperview().dividedBy(lineCount).offset(-widthOffset)
-                } else {
-                    make.width.equalTo(getCurViewWidth(v: view))
+                } else if curViewWidth != 0 {
+                    make.width.equalTo(curViewWidth)
                 }
                 
-                make.height.equalTo(getCurViewHeight(v: view))
-                
+                if curViewHeight != 0 {
+                    make.height.equalTo(curViewHeight)
+                }
+
                 if col == 0 {
                     make.left.equalTo(config.padding.left)
                 } else {
