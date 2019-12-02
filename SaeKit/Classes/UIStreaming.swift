@@ -297,7 +297,6 @@ extension UIStreaming {
         guard let superView = superView else { return }
         let count = subs.count
         var left: CGFloat = config.padding.left
-        var top: CGFloat = config.padding.top
         var widthMax: CGFloat = 0
         var lastLine = superView
         if let superWidth = config.superWidth {
