@@ -22,6 +22,8 @@
 		8C528B1F2393DA3A001E1E4D /* StreamingOfHorMulLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C528B1D2393DA3A001E1E4D /* StreamingOfHorMulLine.swift */; };
 		8C528B212393DA59001E1E4D /* StreamingOfHorMulLineWithCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C528B202393DA59001E1E4D /* StreamingOfHorMulLineWithCount.swift */; };
 		8C528B222393DA59001E1E4D /* StreamingOfHorMulLineWithCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C528B202393DA59001E1E4D /* StreamingOfHorMulLineWithCount.swift */; };
+		8C528B242394AEEF001E1E4D /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C528B232394AEEF001E1E4D /* ContainerView.swift */; };
+		8C528B252394AEEF001E1E4D /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C528B232394AEEF001E1E4D /* ContainerView.swift */; };
 		8CC09428237902D200E0C3C2 /* STATVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC09427237902D200E0C3C2 /* STATVCtrl.swift */; };
 		8CC09429237902D200E0C3C2 /* STATVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC09427237902D200E0C3C2 /* STATVCtrl.swift */; };
 		8CC0942B237902E000E0C3C2 /* UIStreamingVCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0942A237902E000E0C3C2 /* UIStreamingVCtrl.swift */; };
@@ -59,6 +61,7 @@
 		8C528B1A2393DA26001E1E4D /* StreamingOfHor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingOfHor.swift; sourceTree = "<group>"; };
 		8C528B1D2393DA3A001E1E4D /* StreamingOfHorMulLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingOfHorMulLine.swift; sourceTree = "<group>"; };
 		8C528B202393DA59001E1E4D /* StreamingOfHorMulLineWithCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingOfHorMulLineWithCount.swift; sourceTree = "<group>"; };
+		8C528B232394AEEF001E1E4D /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		8CC09427237902D200E0C3C2 /* STATVCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATVCtrl.swift; sourceTree = "<group>"; };
 		8CC0942A237902E000E0C3C2 /* UIStreamingVCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStreamingVCtrl.swift; sourceTree = "<group>"; };
 		8CC0942D2379034E00E0C3C2 /* KVOVCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOVCtrl.swift; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 				8C528B1A2393DA26001E1E4D /* StreamingOfHor.swift */,
 				8C528B1D2393DA3A001E1E4D /* StreamingOfHorMulLine.swift */,
 				8C528B202393DA59001E1E4D /* StreamingOfHorMulLineWithCount.swift */,
+				8C528B232394AEEF001E1E4D /* ContainerView.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -370,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C528B242394AEEF001E1E4D /* ContainerView.swift in Sources */,
 				8C528B1B2393DA26001E1E4D /* StreamingOfHor.swift in Sources */,
 				8C528B182393D09E001E1E4D /* StreamingOfVer.swift in Sources */,
 				8CC0942B237902E000E0C3C2 /* UIStreamingVCtrl.swift in Sources */,
@@ -388,6 +393,7 @@
 			files = (
 				8CC0942F2379034E00E0C3C2 /* KVOVCtrl.swift in Sources */,
 				8C528B192393D09E001E1E4D /* StreamingOfVer.swift in Sources */,
+				8C528B252394AEEF001E1E4D /* ContainerView.swift in Sources */,
 				8C528B222393DA59001E1E4D /* StreamingOfHorMulLineWithCount.swift in Sources */,
 				8C528B1C2393DA26001E1E4D /* StreamingOfHor.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,

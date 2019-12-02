@@ -24,7 +24,7 @@ class StreamingOfVer: UIViewController {
 
 extension StreamingOfVer {
     func setData() {
-        let list = (0..<10).map { _ in UIView.singleView() }
+        let list = (0..<20).map { _ in UIView.singleView() }
         // 垂直布局
         bg.sae.streaming(subs: list).vertical.isFillHor.isFillVer.makeConstraints()
     }
@@ -37,11 +37,12 @@ extension StreamingOfVer {
             view.backgroundColor = .white
             bg.backgroundColor = .white
         }
-
-        view.addSubview(bg)
-        bg.snp.makeConstraints { make in
+        let container = ContainerView(content: bg)
+        view.addSubview(container)
+        container.snp.makeConstraints { make in
             make.left.right.equalTo(0)
-            make.centerX.centerY.equalToSuperview()
+            make.top.equalTo(topLayoutGuide.snp.bottom)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top)
         }
     }
 }

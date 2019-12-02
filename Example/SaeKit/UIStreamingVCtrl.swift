@@ -122,6 +122,20 @@ extension UIView {
         return single
     }
     
+    static func label() -> UILabel {
+        let name = UILabel()
+        name.layer.borderWidth = 0.5
+        name.layer.borderColor = UIColor.lightGray.cgColor
+        name.text = String.randomTitle()
+        name.textAlignment = .center
+        if #available(iOS 13.0, *) {
+            name.textColor = UIColor.label
+        } else {
+        }
+        name.width = (name.text?.getLabelWidth(font: (name.font)!, height: 0) ?? 0.0) + 1 + 16
+        return name
+    }
+    
     var width: CGFloat {
         get {
             return self.bounds.size.width

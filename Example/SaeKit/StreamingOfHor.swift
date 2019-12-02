@@ -38,11 +38,19 @@ extension StreamingOfHor {
             bg.backgroundColor = .white
         }
 
-        view.addSubview(bg)
-        bg.snp.makeConstraints { make in
-            make.left.equalTo(0)
-            make.centerY.equalToSuperview()
+        let container = ContainerView(content: bg)
+        view.addSubview(container)
+        container.snp.makeConstraints { make in
+            make.left.right.equalTo(0)
+            make.top.equalTo(topLayoutGuide.snp.bottom)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top)
         }
+//        
+//        view.addSubview(bg)
+//        bg.snp.makeConstraints { make in
+//            make.left.equalTo(0)
+//            make.centerY.equalToSuperview()
+//        }
     }
 }
 

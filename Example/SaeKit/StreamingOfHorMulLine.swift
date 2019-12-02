@@ -38,12 +38,14 @@ class StreamingOfHorMulLine: UIViewController {
 extension StreamingOfHorMulLine {
     func setData() {
         list = (0..<10).map { _ -> UIView in
-            let single = UIView.singleView()
+            let single = UIView.label()
             return single
         }
         self.view.layoutIfNeeded()
         // 水平换行
-        bg.sae.streaming(subs: list).horizontalMul.isFillHor.isFillVer.hasWidth.makeConstraints()
+        // 父视图宽度固定
+        // 子视图需要事先提供width
+        bg.sae.streaming(subs: list).horizontalMul.isFillHor.isFillVer.height(36).vMargin(10).hMargin(5).hasWidth.makeConstraints()
     }
     
     func setupViews() {

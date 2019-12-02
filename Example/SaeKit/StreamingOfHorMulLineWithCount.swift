@@ -26,7 +26,7 @@ extension StreamingOfHorMulLineWithCount {
     func setData() {
         let list = (0..<10).map { _ in UIView.singleView() }
         // 水平换行且限定每行个数
-        bg.sae.streaming(subs: list).horizontalMulWithCount(3).isFillVer.equalWidth.makeConstraints()
+        bg.sae.streaming(subs: list).horizontalMulWithCount(3).superWidth(view.width).equalWidth.isFillVer.makeConstraints()
     }
     
     func setupViews() {
