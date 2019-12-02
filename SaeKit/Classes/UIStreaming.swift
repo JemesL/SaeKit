@@ -304,6 +304,7 @@ extension UIStreaming {
         } else {
             widthMax = superView.width
         }
+        if widthMax == 0 { return }
         // 当前行数
         var curLineCount = 1
         for (index, view) in subs.enumerated() {
@@ -317,7 +318,9 @@ extension UIStreaming {
                     // 换行
                     left = config.padding.left
                     curLineCount += 1
-                    lastLine = subs[index - 1]
+                    if (index - 1) >= 0 {
+                        lastLine = subs[index - 1]
+                    }
                 }
                 make.width.equalTo(curViewWidth)
                 if curViewHeight != 0 {
@@ -377,7 +380,7 @@ extension UIStreaming {
 
                 if col == 0 {
                     make.left.equalTo(config.padding.left)
-                } else {
+                } else if (index - 1) >= 0 {
                     let leftView = subs[index - 1]
                     make.left.equalTo(leftView.snp.right).offset(config.hMargin)
                 }
