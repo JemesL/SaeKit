@@ -141,7 +141,7 @@ public extension UIView {
     func consSide(_ margin: CGFloat, toItem: UIView? = nil, attribute: NSLayoutConstraint.Attribute, destAttri: NSLayoutConstraint.Attribute, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
         self.translatesAutoresizingMaskIntoConstraints = false
         if let superView = superview {
-            var cons = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: toItem ?? superView, attribute: destAttri, multiplier: 1 / dividedBy, constant: margin)
+            let cons = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: toItem ?? superView, attribute: destAttri, multiplier: 1 / dividedBy, constant: margin)
             cons.priority = priority
             superView.addConstraint(cons)
         }
