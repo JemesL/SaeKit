@@ -1,14 +1,13 @@
 PODS:
-  - SaeKit (0.1.0):
+  - SaeKit (0.1.3):
     - SnapKit (~> 4.2.0)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - SaeKit (from `../`)
-  - SnapKit (~> 4.2.0)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - SnapKit
 
 EXTERNAL SOURCES:
@@ -16,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SaeKit: f1edda2df2611ff4f0e44da155b0ddebef5f438f
+  SaeKit: 3300ecd29ff3596d90c7db4bfe8f1a906259b7e9
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: abc09ee09c954b23ddda00c51815e45661277d49
+PODFILE CHECKSUM: 9262ee0b4ae67673e10f89b085aae6fd739673fc
 
 COCOAPODS: 1.8.4

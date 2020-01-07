@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SnapKit
 
 public extension SaeSpace where Base: UIView {
     func streaming(subs subviews: [UIView]) -> UIStreaming {
@@ -217,34 +216,32 @@ extension UIStreaming {
         let count = subs.count
         for (index, view) in subs.enumerated() {
             superView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.left.equalTo(config.padding.left)
-                if let width = config.width {
-                    make.width.equalTo(width)
-                } else if config.hasWidth {
-                    make.width.equalTo(view.width)
+            view.consLeft(config.padding.left)
+            if let width = config.width {
+                view.consWidth(width)
+            } else if config.hasWidth {
+                view.consWidth(view.width)
+            }
+            if config.isFillHor {
+                view.consRight(-config.padding.right, relatedBy: .lessThanOrEqual)
+            }
+            
+            if let height = config.height {
+                view.consHeight(height)
+            } else if config.hasHeight {
+                view.consHeight(view.height)
+            } else if config.isEqualHeight {
+                if index > 0 {
+                    view.consHeight(0, toItem: firstView, destAttri: .height)
                 }
-                if config.isFillHor {
-                    make.right.lessThanOrEqualTo(-config.padding.right)
-                }
-                
-                if let height = config.height {
-                    make.height.equalTo(height)
-                } else if config.hasHeight {
-                    make.height.equalTo(view.height)
-                } else if config.isEqualHeight {
-                    if index > 0 {
-                        make.height.equalTo(firstView.snp.height)
-                    }
-                }
-                if index == 0 {
-                    make.top.equalTo(config.padding.top)
-                } else {
-                    make.top.equalTo(lastView.snp.bottom).offset(config.vMargin).priority(.high)
-                }
-                if config.isFillVer, index == count - 1 {
-                    make.bottom.equalTo(-config.padding.bottom)
-                }
+            }
+            if index == 0 {
+                view.consTop(config.padding.top)
+            } else {
+                view.consTop(config.vMargin, toItem: lastView, destAttri: .bottom, priority: .defaultHigh)
+            }
+            if config.isFillVer, index == count - 1 {
+                view.consBottom(-config.padding.bottom)
             }
             lastView = view
         }
@@ -252,41 +249,38 @@ extension UIStreaming {
     
     private func makeHorizontalConstraints() {
         guard let superView = superView else { return }
-//        guard let firstView = subs.first else { return }
         var lastView = superView
         let count = subs.count
         
         for (index, view) in subs.enumerated() {
             superView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.top.equalTo(0)
-                if let width = config.width {
-                    make.width.equalTo(width)
-                } else if config.hasWidth {
-                    make.width.equalTo(view.width)
-                } else if config.isEqualWidth {
-                    if index > 0 {
-                        make.width.equalTo(lastView)
-                    }
+            view.consTop(0)
+            if let width = config.width {
+                view.consWidth(width)
+            } else if config.hasWidth {
+                view.consWidth(view.width)
+            } else if config.isEqualWidth {
+                if index > 0 {
+                    view.consWidth(0, toItem: lastView, destAttri: .width)
                 }
-                if config.isFillHor, index == count - 1 {
-                    make.right.equalTo(-config.padding.right)
-                }
-                
-                if let height = config.height {
-                    make.height.equalTo(height)
-                } else if config.hasHeight {
-                    make.height.equalTo(view.height)
-                }
-                if config.isFillVer {
-                    make.bottom.lessThanOrEqualTo(-config.padding.bottom)
-                }
-                
-                if index == 0 {
-                    make.left.equalTo(config.padding.left)
-                } else {
-                    make.left.equalTo(lastView.snp.right).offset(config.hMargin)
-                }
+            }
+            if config.isFillHor, index == count - 1 {
+                view.consRight(-config.padding.right)
+            }
+            
+            if let height = config.height {
+                view.consHeight(height)
+            } else if config.hasHeight {
+                view.consHeight(view.height)
+            }
+            if config.isFillVer {
+                view.consBottom(-config.padding.bottom, relatedBy: .lessThanOrEqual)
+            }
+            
+            if index == 0 {
+                view.consLeft(config.padding.left)
+            } else {
+                view.consLeft(config.hMargin, toItem: lastView, destAttri: .right)
             }
             lastView = view
         }
@@ -313,30 +307,27 @@ extension UIStreaming {
             let curViewWidth = getCurViewWidth(v: view)
             let curViewHeight = getCurViewHeight(v: view)
             
-            view.snp.remakeConstraints { (make) in
-                if left + view.width > widthMax {
-                    // 换行
-                    left = config.padding.left
-                    curLineCount += 1
-                    if (index - 1) >= 0 {
-                        lastLine = subs[index - 1]
-                    }
+            if left + view.width > widthMax {
+                // 换行
+                left = config.padding.left
+                curLineCount += 1
+                if (index - 1) >= 0 {
+                    lastLine = subs[index - 1]
                 }
-                make.width.equalTo(curViewWidth)
-                if curViewHeight != 0 {
-                    make.height.equalTo(curViewHeight)
-                }
-                if curLineCount == 1 {
-                    make.top.equalTo(config.padding.top)
-                } else {
-                    make.top.equalTo(lastLine.snp.bottom).offset(config.vMargin)
-                }
-//                make.top.equalTo(top)
-                make.left.equalTo(left)
-                left += config.hMargin + curViewWidth
-                if index == (count - 1) {
-                    make.bottom.equalTo(-config.padding.bottom)
-                }
+            }
+            view.consWidth(curViewWidth)
+            if curViewHeight != 0 {
+                view.consHeight(curViewHeight)
+            }
+            if curLineCount == 1 {
+                view.consTop(config.padding.top)
+            } else {
+                view.consTop(config.vMargin, toItem: lastLine, destAttri: .bottom)
+            }
+            view.consLeft(left)
+            left += config.hMargin + curViewWidth
+            if index == (count - 1) {
+                view.consBottom(-config.padding.bottom)
             }
         }
     }
@@ -352,49 +343,45 @@ extension UIStreaming {
             lineCount = lc
         }
         let count = subs.count
-//        guard let firstView = subs.first else { return }
         for (index, view) in subs.enumerated() {
             superView.addSubview(view)
             let curViewWidth = getCurViewWidth(v: view)
             let curViewHeight = getCurViewHeight(v: view)
-            view.snp.remakeConstraints { (make) in
-                
-                // 列数
-                let col: Int = index % lineCount
-                if index < lineCount {
-                    make.top.equalTo(config.padding.top)
-                } else {
-                    make.top.equalTo(lastLine.snp.bottom).offset(config.vMargin)
-                }
-                
-                if config.isEqualWidth {// 等分
-                    let widthOffset: CGFloat = (config.padding.left + config.padding.right + 2 * config.hMargin) / CGFloat(lineCount)
-                    make.width.equalToSuperview().dividedBy(lineCount).offset(-widthOffset)
-                } else if curViewWidth != 0 {
-                    make.width.equalTo(curViewWidth)
-                }
-                
-                if curViewHeight != 0 {
-                    make.height.equalTo(curViewHeight)
-                }
-
-                if col == 0 {
-                    make.left.equalTo(config.padding.left)
-                } else if (index - 1) >= 0 {
-                    let leftView = subs[index - 1]
-                    make.left.equalTo(leftView.snp.right).offset(config.hMargin)
-                }
-                
-                let isLastCol = col == (lineCount - 1)
-                if config.isFillHor && isLastCol {
-                    make.right.equalTo(-config.padding.right)
-                }
-                
-                if index == count - 1 {
-                    make.bottom.equalTo(-config.padding.bottom)
-                }
-                col == lineCount - 1 ? lastLine = view : nil
+            
+            let col: Int = index % lineCount
+            if index < lineCount {
+                view.consTop(config.padding.top)
+            } else {
+                view.consTop(config.vMargin, toItem: lastLine, destAttri: .bottom)
             }
+            
+            if config.isEqualWidth {// 等分
+                let widthOffset: CGFloat = (config.padding.left + config.padding.right + 2 * config.hMargin) / CGFloat(lineCount)
+                view.consWidth(-widthOffset, toItem: superView, destAttri: .width, dividedBy: CGFloat(lineCount))
+            } else if curViewWidth != 0 {
+                view.consWidth(curViewWidth)
+            }
+            
+            if curViewHeight != 0 {
+                view.consHeight(curViewHeight)
+            }
+
+            if col == 0 {
+                view.consLeft(config.padding.left)
+            } else if (index - 1) >= 0 {
+                let leftView = subs[index - 1]
+                view.consLeft(config.hMargin, toItem: leftView, destAttri: .right)
+            }
+            
+            let isLastCol = col == (lineCount - 1)
+            if config.isFillHor && isLastCol {
+                view.consRight(-config.padding.right)
+            }
+            
+            if index == count - 1 {
+                view.consBottom(-config.padding.bottom)
+            }
+            col == lineCount - 1 ? lastLine = view : nil
         }
     }
     

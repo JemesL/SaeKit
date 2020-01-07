@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 // MARK: - 基础frame相关属性
 extension UIView {
     var width: CGFloat {
@@ -96,6 +96,54 @@ extension UIView {
         }
         set(bottom) {
             self.frame = CGRect(x: self.frame.origin.x, y: bottom - self.height, width: self.width, height: self.height)
+        }
+    }
+}
+
+
+// MARK: - 约束
+public extension UIView {
+    
+    func consWidth(_ width: CGFloat) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width))
+    }
+    
+    func consWidth(_ margin: CGFloat, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .width, destAttri: destAttri ?? .width, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+    
+    func consHeight(_ height: CGFloat) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height))
+    }
+    
+    func consHeight(_ margin: CGFloat, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .height, destAttri: destAttri ?? .height, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+    
+    func consTop(_ margin: CGFloat, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .top, destAttri: destAttri ?? .top, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+    
+    func consLeft(_ margin: CGFloat, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .left, destAttri: destAttri ?? .left, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+
+    func consRight(_ margin: CGFloat, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .right, destAttri: destAttri ?? .right, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+
+    func consBottom(_ margin: CGFloat, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .bottom, destAttri: destAttri ?? .bottom, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+    
+    func consSide(_ margin: CGFloat, toItem: UIView? = nil, attribute: NSLayoutConstraint.Attribute, destAttri: NSLayoutConstraint.Attribute, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        if let superView = superview {
+            var cons = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: toItem ?? superView, attribute: destAttri, multiplier: 1 / dividedBy, constant: margin)
+            cons.priority = priority
+            superView.addConstraint(cons)
         }
     }
 }

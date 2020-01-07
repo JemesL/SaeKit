@@ -1,8 +1,7 @@
 {
   "name": "SaeKit",
-  "version": "0.1.0",
-  "summary": "A short description of SaeKit.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.1.3",
+  "summary": "Release 0.1.3",
   "homepage": "https://github.com/Jemesl/SaeKit",
   "license": {
     "type": "MIT",
@@ -13,15 +12,17 @@
   },
   "source": {
     "git": "https://github.com/Jemesl/SaeKit.git",
-    "tag": "0.1.0"
+    "tag": "0.1.3"
   },
   "platforms": {
     "ios": "8.0"
   },
   "source_files": "SaeKit/Classes/**/*",
+  "swift_versions": "5.0",
   "dependencies": {
     "SnapKit": [
       "~> 4.2.0"
     ]
-  }
+  },
+  "swift_version": "5.0"
 }
