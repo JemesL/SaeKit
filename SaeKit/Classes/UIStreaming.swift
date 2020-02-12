@@ -326,7 +326,7 @@ extension UIStreaming {
             }
             view.consLeft(left)
             left += config.hMargin + curViewWidth
-            if index == (count - 1) {
+            if config.isFillVer, index == (count - 1) {
                 view.consBottom(-config.padding.bottom)
             }
         }
@@ -378,7 +378,7 @@ extension UIStreaming {
                 view.consRight(-config.padding.right)
             }
             
-            if index == count - 1 {
+            if config.isFillVer, index == count - 1 {
                 view.consBottom(-config.padding.bottom)
             }
             col == lineCount - 1 ? lastLine = view : nil
