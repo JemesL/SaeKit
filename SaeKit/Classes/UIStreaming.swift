@@ -22,8 +22,12 @@ fileprivate enum Direction {
 fileprivate struct UIStreamingConfig {
     // 水平/垂直
     var direction: Direction?
-    // 水平方向填满
+    // 水平方向与父视图等宽
     var isFillHor: Bool = false
+    // 水平方向与父视图等宽
+//    var isFillHorAbsolute: Bool = false
+    // 水平方向撑满 可能小于父视图的宽度
+    var isLessFillHor: Bool = false
     // 垂直方向填满
     var isFillVer: Bool = false
     // 是否换行
@@ -103,6 +107,13 @@ public class UIStreaming {
     public var isFillHor: UIStreaming {
         get {
             config.isFillHor = true
+            return self
+        }
+    }
+    
+    public var isLessFillHor: UIStreaming {
+        get {
+            config.isLessFillHor = true
             return self
         }
     }
@@ -223,6 +234,8 @@ extension UIStreaming {
                 view.consWidth(view.width)
             }
             if config.isFillHor {
+                view.consRight(-config.padding.right)
+            } else if config.isLessFillHor {
                 view.consRight(-config.padding.right, relatedBy: .lessThanOrEqual)
             }
             
@@ -266,6 +279,8 @@ extension UIStreaming {
             }
             if config.isFillHor, index == count - 1 {
                 view.consRight(-config.padding.right)
+            } else if config.isLessFillHor, index == count - 1 {
+                view.consRight(-config.padding.right, relatedBy: .lessThanOrEqual)
             }
             
             if let height = config.height {

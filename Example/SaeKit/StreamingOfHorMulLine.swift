@@ -45,7 +45,7 @@ extension StreamingOfHorMulLine {
         // 水平换行
         // 父视图宽度固定
         // 子视图需要事先提供width
-        bg.sae.streaming(subs: list).horizontalMul.isFillHor.isFillVer.height(36).vMargin(10).hMargin(5).hasWidth.makeConstraints()
+        bg.sae.streaming(subs: list).horizontalMul.isFillVer.height(36).vMargin(10).hMargin(5).hasWidth.makeConstraints()
     }
     
     func setupViews() {
