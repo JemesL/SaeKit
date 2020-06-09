@@ -138,6 +138,14 @@ public extension UIView {
         consSide(margin, toItem: toItem, attribute: .bottom, destAttri: destAttri ?? .bottom, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
     }
     
+    func consCenterX(_ margin: CGFloat = 0, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .centerX, destAttri: destAttri ?? .centerX, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+    
+    func consCenterY(_ margin: CGFloat = 0, toItem: UIView? = nil, destAttri: NSLayoutConstraint.Attribute? = nil, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
+        consSide(margin, toItem: toItem, attribute: .centerY, destAttri: destAttri ?? .centerY, dividedBy: dividedBy, relatedBy: relatedBy, priority: priority)
+    }
+    
     func consSide(_ margin: CGFloat, toItem: UIView? = nil, attribute: NSLayoutConstraint.Attribute, destAttri: NSLayoutConstraint.Attribute, dividedBy: CGFloat = 1, relatedBy: NSLayoutConstraint.Relation = .equal, priority: UILayoutPriority = .required) {
         self.translatesAutoresizingMaskIntoConstraints = false
         if let superView = superview {

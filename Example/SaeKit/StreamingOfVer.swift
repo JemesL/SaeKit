@@ -26,7 +26,7 @@ extension StreamingOfVer {
     func setData() {
         let list = (0..<20).map { _ in UIView.singleView() }
         // 垂直布局
-        bg.sae.streaming(subs: list).vertical.isLessFillHor.isFillVer.makeConstraints()
+        bg.sae.streaming(subs: list).vertical.alignment(.center).isFillVer.superWidth(375).makeConstraints()
     }
     
     func setupViews() {

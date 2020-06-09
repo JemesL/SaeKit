@@ -45,13 +45,22 @@ fileprivate struct UIStreamingConfig {
     var height: CGFloat?
     var padding: UIEdgeInsets = UIEdgeInsets.zero
     var superWidth: CGFloat?
+    // 对齐方式
+    var alignment: UIStreaming.Alignment = .center
+    
     
 }
 
 public class UIStreaming {
     var subs: [UIView] = []
     var superView: UIView?
-    
+    public enum Alignment {
+        case left
+        case right
+        case center
+        case top
+        case bottom
+    }
     private var config = UIStreamingConfig()
     
     public var horizontal: UIStreaming {
@@ -64,6 +73,7 @@ public class UIStreaming {
     public var vertical: UIStreaming {
         get {
             self.config.direction = .vertical
+            self.config.alignment = .left
             return self
         }
     }
@@ -80,6 +90,11 @@ public class UIStreaming {
         self.config.direction = .horizontal
         self.config.isMul = true
         self.config.lineCount = v
+        return self
+    }
+    
+    public func alignment(_ ali: Alignment) -> UIStreaming {
+        self.config.alignment = ali
         return self
     }
     
@@ -227,7 +242,6 @@ extension UIStreaming {
         let count = subs.count
         for (index, view) in subs.enumerated() {
             superView.addSubview(view)
-            view.consLeft(config.padding.left)
             if let width = config.width {
                 view.consWidth(width)
             } else if config.hasWidth {
@@ -235,8 +249,21 @@ extension UIStreaming {
             }
             if config.isFillHor {
                 view.consRight(-config.padding.right)
+                view.consLeft(config.padding.left)
             } else if config.isLessFillHor {
+                view.consLeft(config.padding.left)
                 view.consRight(-config.padding.right, relatedBy: .lessThanOrEqual)
+            } else {
+                switch config.alignment {
+                case .left:
+                    view.consLeft(config.padding.left)
+                case .right:
+                    view.consRight(-config.padding.right)
+                case .center:
+                    view.consCenterX()
+                default:
+                    break
+                }
             }
             
             if let height = config.height {
