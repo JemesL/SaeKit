@@ -294,7 +294,7 @@ extension UIStreaming {
         
         for (index, view) in subs.enumerated() {
             superView.addSubview(view)
-            view.consTop(0)
+            view.consTop(config.padding.top)
             if let width = config.width {
                 view.consWidth(width)
             } else if config.hasWidth {
