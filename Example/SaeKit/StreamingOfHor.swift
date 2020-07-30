@@ -13,12 +13,13 @@ import UIKit
 class StreamingOfHor: UIViewController {
     
     var bg = UIView()
-    
+    var bg2 = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "StreamingOfHor"
         setupViews()
         setData()
+        setData2()
     }
 }
 
@@ -27,6 +28,19 @@ extension StreamingOfHor {
         let list = (0..<3).map { _ in UIView.singleView() }
         // 水平布局
         bg.sae.streaming(subs: list).horizontal.isFillHor.isFillVer.makeConstraints()
+    }
+    
+    func setData2() {
+        var list: [UIView] = []
+        for index in 0..<4 {
+            let single = UIView.singleView()
+            if index != 0 {
+                single.width = 66
+                single.tag = 666
+            }
+            list.append(single)
+        }
+        bg2.sae.streaming(subs: list).horizontal.hasWidth(withTag: 666).isFillHor.isFillVer.makeConstraints()
     }
     
     func setupViews() {
@@ -43,7 +57,13 @@ extension StreamingOfHor {
         container.snp.makeConstraints { make in
             make.left.right.equalTo(0)
             make.top.equalTo(topLayoutGuide.snp.bottom)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            make.height.equalTo(100)
+        }
+        
+        view.addSubview(bg2)
+        bg2.snp.makeConstraints { make in
+            make.left.right.equalTo(0)
+            make.top.equalTo(container.snp.bottom).offset(20)
         }
 //        
 //        view.addSubview(bg)
@@ -51,6 +71,8 @@ extension StreamingOfHor {
 //            make.left.equalTo(0)
 //            make.centerY.equalToSuperview()
 //        }
+        
+        
     }
 }
 

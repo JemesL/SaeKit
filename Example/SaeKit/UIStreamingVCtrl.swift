@@ -116,7 +116,7 @@ extension UIView {
         }
         name.snp.makeConstraints { make in
             make.left.equalTo(icon.snp.right).offset(10)
-            make.right.equalTo(-20)
+            make.right.equalTo(-20).priority(.low)
             make.centerY.equalTo(icon)
         }
         return single

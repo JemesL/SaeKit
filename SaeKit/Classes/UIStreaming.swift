@@ -43,6 +43,8 @@ fileprivate struct UIStreamingConfig {
     var hasWidth: Bool = false
     var width: CGFloat?
     var height: CGFloat?
+    var widthTag: Int? = nil
+    var heightTag: Int? = nil
     var padding: UIEdgeInsets = UIEdgeInsets.zero
     var superWidth: CGFloat?
     // 对齐方式
@@ -150,8 +152,20 @@ public class UIStreaming {
         return self
     }
     
+    public func hasHeight(withTag: Int) -> UIStreaming {
+        self.config.hasHeight = true
+        self.config.heightTag = withTag
+        return self
+    }
+    
     public var hasHeight: UIStreaming {
         self.config.hasHeight = true
+        return self
+    }
+    
+    public func hasWidth(withTag: Int) -> UIStreaming {
+        self.config.hasWidth = true
+        self.config.widthTag = withTag
         return self
     }
     
@@ -245,7 +259,13 @@ extension UIStreaming {
             if let width = config.width {
                 view.consWidth(width)
             } else if config.hasWidth {
-                view.consWidth(view.width)
+                if let tag = config.widthTag{
+                    if tag == view.tag {
+                        view.consWidth(view.width)
+                    }
+                } else {
+                    view.consWidth(view.width)
+                }
             }
             if config.isFillHor {
                 view.consRight(-config.padding.right)
@@ -269,7 +289,13 @@ extension UIStreaming {
             if let height = config.height {
                 view.consHeight(height)
             } else if config.hasHeight {
-                view.consHeight(view.height)
+                if let tag = config.heightTag {
+                    if tag == view.tag {
+                        view.consHeight(view.height)
+                    }
+                } else {
+                    view.consHeight(view.height)
+                }
             } else if config.isEqualHeight {
                 if index > 0 {
                     view.consHeight(0, toItem: firstView, destAttri: .height)
@@ -298,7 +324,13 @@ extension UIStreaming {
             if let width = config.width {
                 view.consWidth(width)
             } else if config.hasWidth {
-                view.consWidth(view.width)
+                if let tag = config.widthTag {
+                    if tag == view.tag {
+                        view.consWidth(view.width)
+                    }
+                } else {
+                    view.consWidth(view.width)
+                }
             } else if config.isEqualWidth {
                 if index > 0 {
                     view.consWidth(0, toItem: lastView, destAttri: .width)
@@ -313,7 +345,13 @@ extension UIStreaming {
             if let height = config.height {
                 view.consHeight(height)
             } else if config.hasHeight {
-                view.consHeight(view.height)
+                if let tag = config.heightTag {
+                    if tag == view.tag {
+                        view.consHeight(view.height)
+                    }
+                } else {
+                    view.consHeight(view.height)
+                }
             }
             if config.isFillVer {
                 view.consBottom(-config.padding.bottom, relatedBy: .lessThanOrEqual)
@@ -398,7 +436,7 @@ extension UIStreaming {
             }
             
             if config.isEqualWidth {// 等分
-                let widthOffset: CGFloat = (config.padding.left + config.padding.right + 2 * config.hMargin) / CGFloat(lineCount)
+                let widthOffset: CGFloat = (config.padding.left + config.padding.right + CGFloat(lineCount - 1) * config.hMargin) / CGFloat(lineCount)
                 view.consWidth(-widthOffset, toItem: superView, destAttri: .width, dividedBy: CGFloat(lineCount))
             } else if curViewWidth != 0 {
                 view.consWidth(curViewWidth)
